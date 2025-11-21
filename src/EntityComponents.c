@@ -132,13 +132,13 @@ void TiltComp_Update(struct LocalPlayer* p, struct TiltComp* anim, float delta) 
 /*########################################################################################################################*
 *-----------------------------------------------------HacksComponent------------------------------------------------------*
 *#########################################################################################################################*/
-static void HacksComp_SetAll(struct HacksComp* hacks, cc_bool allowed) {
-	hacks->CanAnyHacks = allowed; hacks->CanFly            = allowed;
-	hacks->CanNoclip   = allowed; hacks->CanRespawn        = allowed;
-	hacks->CanSpeed    = allowed; hacks->CanPushbackBlocks = allowed;
+void HacksComp_Init(struct HacksComp* hacks, struct LocalPlayer* p); {
+	hacks->CanAnyHacks = false; hacks->CanFly            = false;
+	hacks->CanNoclip   = false; hacks->CanRespawn        = false;
+	hacks->CanSpeed    = false; hacks->CanPushbackBlocks = false;
 
-	hacks->CanUseThirdPerson = allowed;
-	hacks->CanSeeAllNames    = allowed && hacks->IsOp;
+	hacks->CanUseThirdPerson = false;
+	hacks->CanSeeAllNames    = false && hacks->IsOp;
 }
 
 void HacksComp_Init(struct HacksComp* hacks) {
@@ -1144,3 +1144,4 @@ void SoundComp_Tick(struct LocalPlayer* p, cc_bool wasOnGround) {
 		sounds_lastPos = soundPos;
 	}
 }
+
